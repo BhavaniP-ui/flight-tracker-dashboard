@@ -1,0 +1,58 @@
+<div class="filters-card">
+  <!-- formGroup directive moolama TS-la irukura filterForm bind aagudhu -->
+  <form [formGroup]="filterForm" class="filters-grid">
+    
+    <!-- 1. Search by Callsign -->
+    <div class="form-group">
+      <label for="callsign">Search Callsign</label>
+      <input 
+        type="text" 
+        id="callsign"
+        formControlName="callsign" 
+        placeholder="e.g. IGO204, AIC505..." 
+        autocomplete="off"
+      />
+    </div>
+
+    <!-- 2. Filter by Status -->
+    <div class="form-group">
+      <label for="status">Flight Status</label>
+      <select id="status" formControlName="status">
+        <option value="ALL">All Statuses</option>
+        <option value="ACTIVE">Active (In-Flight)</option>
+        <option value="DELAYED">Delayed</option>
+        <option value="ARRIVED">Arrived</option>
+        <option value="SCHEDULED">Scheduled</option>
+      </select>
+    </div>
+
+    <!-- 3. Filter by Origin Airport -->
+    <div class="form-group">
+      <label for="origin">Origin</label>
+      <select id="origin" formControlName="origin">
+        <option value="ALL">All Origins</option>
+        <!-- Dynamic-ah airport list ngFor pottu render panrom -->
+        <option *ngFor="let airport of airports" [value]="airport.code">
+          {{ airport.name }}
+        </option>
+      </select>
+    </div>
+
+    <!-- 4. Filter by Destination Airport -->
+    <div class="form-group">
+      <label for="destination">Destination</label>
+      <select id="destination" formControlName="destination">
+        <option value="ALL">All Destinations</option>
+        <option *ngFor="let airport of airports" [value]="airport.code">
+          {{ airport.name }}
+        </option>
+      </select>
+    </div>
+
+    <!-- 5. Reset Action Button -->
+    <div class="form-actions">
+      <button type="button" class="btn-reset" (click)="onReset()">Reset</button>
+    </div>
+
+  </form>
+</div>

@@ -1,0 +1,183 @@
+.details-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  height: 520px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.empty-state {
+  text-align: center;
+  color: #64748b;
+
+  .empty-icon {
+    font-size: 42px;
+    margin-bottom: 12px;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 13px;
+    line-height: 1.5;
+    max-width: 260px;
+    margin: 0 auto;
+  }
+}
+
+.details-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .flight-no {
+      font-size: 22px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .callsign {
+      font-size: 14px;
+      font-weight: 600;
+      color: #2563eb;
+      margin-left: 6px;
+    }
+
+    .btn-close {
+      background: none;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      color: #94a3b8;
+
+      &:hover {
+        color: #0f172a;
+      }
+    }
+  }
+
+  .status-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+
+    .badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+
+      &.active {
+        background-color: #d1fae5;
+        color: #065f46;
+      }
+      &.delayed {
+        background-color: #fef3c7;
+        color: #92400e;
+      }
+      &.arrived {
+        background-color: #f1f5f9;
+        color: #475569;
+      }
+      &.scheduled {
+        background-color: #dbeafe;
+        color: #1e40af;
+      }
+    }
+
+    .aircraft-type {
+      font-size: 13px;
+      color: #64748b;
+      font-weight: 500;
+    }
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #e2e8f0;
+    margin: 16px 0;
+  }
+
+  .route-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8fafc;
+    padding: 12px 16px;
+    border-radius: 8px;
+
+    .airport-node {
+      display: flex;
+      flex-direction: column;
+
+      .code {
+        font-size: 18px;
+        font-weight: 700;
+        color: #1e293b;
+      }
+      .city {
+        font-size: 12px;
+        color: #64748b;
+      }
+      .time-label {
+        font-size: 11px;
+        color: #475569;
+        margin-top: 4px;
+      }
+
+      &.destination {
+        text-align: right;
+      }
+    }
+
+    .route-arrow {
+      font-size: 18px;
+      color: #94a3b8;
+    }
+  }
+
+  .telemetry-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: auto;
+
+    .telemetry-item {
+      background: #f8fafc;
+      padding: 10px;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+
+      .label {
+        font-size: 11px;
+        color: #64748b;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+
+      .value {
+        font-size: 14px;
+        font-weight: 700;
+        color: #1e293b;
+        margin-top: 2px;
+      }
+    }
+  }
+}

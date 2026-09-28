@@ -1,0 +1,74 @@
+<div class="details-card">
+  
+  <!-- Empty State: No flight selected yet -->
+  <div *ngIf="!selectedFlight" class="empty-state">
+    <div class="empty-icon">🛫</div>
+    <h3>No Flight Selected</h3>
+    <p>Select any flight on the map or from the list below to view complete operational details.</p>
+  </div>
+
+  <!-- Active Details State: Assessment-la ketta exact fields -->
+  <div *ngIf="selectedFlight" class="details-content">
+    
+    <div class="details-header">
+      <div>
+        <span class="flight-no">{{ selectedFlight.flightNumber }}</span>
+        <span class="callsign">({{ selectedFlight.callsign }})</span>
+      </div>
+      <button class="btn-close" (click)="clearSelection()" title="Clear selection">✕</button>
+    </div>
+
+    <!-- Status Badge -->
+    <div class="status-row">
+      <span class="badge" [ngClass]="getStatusBadgeClass(selectedFlight.status)">
+        ● {{ selectedFlight.status }}
+      </span>
+      <span class="aircraft-type">✈ {{ selectedFlight.aircraftType }}</span>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- Route Overview -->
+    <div class="route-box">
+      <div class="airport-node">
+        <span class="code">{{ selectedFlight.origin.code }}</span>
+        <span class="city">{{ selectedFlight.origin.city }}</span>
+        <span class="time-label">Est Dep: <strong>{{ selectedFlight.estimatedDepartureTime }}</strong></span>
+      </div>
+
+      <div class="route-arrow">
+        <span>➔</span>
+      </div>
+
+      <div class="airport-node destination">
+        <span class="code">{{ selectedFlight.destination.code }}</span>
+        <span class="city">{{ selectedFlight.destination.city }}</span>
+        <span class="time-label">Est Arr: <strong>{{ selectedFlight.estimatedArrivalTime }}</strong></span>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- Live Telemetry Coordinates & Speed -->
+    <div class="telemetry-grid">
+      <div class="telemetry-item">
+        <span class="label">Altitude</span>
+        <span class="value">{{ selectedFlight.currentPosition.altitude | number }} ft</span>
+      </div>
+      <div class="telemetry-item">
+        <span class="label">Speed</span>
+        <span class="value">{{ selectedFlight.currentPosition.speed }} kts</span>
+      </div>
+      <div class="telemetry-item">
+        <span class="label">Latitude</span>
+        <span class="value">{{ selectedFlight.currentPosition.lat | number:'1.2-4' }}°</span>
+      </div>
+      <div class="telemetry-item">
+        <span class="label">Longitude</span>
+        <span class="value">{{ selectedFlight.currentPosition.lng | number:'1.2-4' }}°</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>

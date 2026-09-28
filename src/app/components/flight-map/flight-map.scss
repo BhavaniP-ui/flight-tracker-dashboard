@@ -1,0 +1,61 @@
+.map-wrapper {
+  width: 100%;
+  height: 520px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  position: relative;
+  background-color: #e2e8f0;
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+// Plane Marker Styling on Map
+:host ::ng-deep {
+  .flight-pin {
+    background: transparent;
+    border: none;
+
+    .plane-marker {
+      width: 28px;
+      height: 28px;
+      background-color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.25);
+      }
+
+      &.active {
+        border: 2px solid #10b981;
+        color: #10b981;
+      }
+
+      &.delayed {
+        border: 2px solid #f59e0b;
+        color: #f59e0b;
+      }
+
+      &.arrived {
+        border: 2px solid #64748b;
+        color: #64748b;
+      }
+
+      &.scheduled {
+        border: 2px solid #2563eb;
+        color: #2563eb;
+      }
+    }
+  }
+}

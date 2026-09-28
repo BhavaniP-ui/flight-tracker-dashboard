@@ -1,0 +1,51 @@
+<div class="list-wrapper">
+  <div class="list-header">
+    <h3>Active Flights Schedule</h3>
+    <span class="count-badge">{{ flights.length }} Flights</span>
+  </div>
+
+  <div class="table-container">
+    <table class="flight-table">
+      <thead>
+        <tr>
+          <th>Flight</th>
+          <th>Callsign</th>
+          <th>Aircraft</th>
+          <th>Route</th>
+          <th>Status</th>
+          <th>Est Dep</th>
+          <th>Est Arr</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Empty state check -->
+        <tr *ngIf="flights.length === 0">
+          <td colspan="7" class="no-data">No flights match the selected filter criteria.</td>
+        </tr>
+
+        <!-- Flight rows -->
+        <tr 
+          *ngFor="let flight of flights" 
+          [class.selected-row]="flight.id === selectedFlightId"
+          (click)="onSelectFlight(flight)"
+        >
+          <td class="bold-text">✈ {{ flight.flightNumber }}</td>
+          <td class="callsign-cell">{{ flight.callsign }}</td>
+          <td>{{ flight.aircraftType }}</td>
+          <td>
+            <span class="route-pill">
+              {{ flight.origin.code }} ➔ {{ flight.destination.code }}
+            </span>
+          </td>
+          <td>
+            <span class="badge" [ngClass]="getStatusClass(flight.status)">
+              {{ flight.status }}
+            </span>
+          </td>
+          <td>{{ flight.estimatedDepartureTime }}</td>
+          <td>{{ flight.estimatedArrivalTime }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
